@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Dennis</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* 1. Background Image File (Must be in same folder) */
+            /* If your file is a JPG, change this to webbg.jpg */
+            --bg-image: url('webbg.png');
+            
+            /* 2. Semi-Transparent Card Backgrounds */
+            --card-bg-transparent: rgba(35, 36, 38, 0.40); 
+            --softbox-bg-transparent: rgba(45, 46, 48, 0.4); 
+            
+            --border-color: #444746;
+            --text-main: #E3E3E3;
+            --text-muted: #9AA0A6;
+            --accent-color: #58a6ff; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: 
+                linear-gradient(
+                    rgba(19, 19, 20, 0.90), 
+                    rgba(19, 19, 20, 0.90)
+                ),
+                var(--bg-image);
+                
+            background-repeat: repeat;
+            background-size: auto;
+            background-position: center;
+            background-attachment: fixed;
+            
+            color: var(--text-main);
+            font-family: 'IBM Plex Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem;
+            font-size: 13px; 
+            line-height: 1.4; 
+        }
+
+        /* Nav */
+        nav {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto 0.8rem auto;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Main Layout */
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            flex-grow: 1; 
+        }
+
+        /* Main Box */
+        .terminal-card {
+            width: 100%;
+            max-width: 680px;
+            
+            background-color: var(--card-bg-transparent);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.8rem;
+        }
+
+        /* Header */
+        .header-group {
+            /* Reduced margin */
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            width: 42px;
+            height: auto;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .role {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Softbox Bio */
+        .softbox {
+            background-color: var(--softbox-bg-transparent);
+            border-radius: 4px;
+            padding: 1rem;
+            color: var(--text-main);
+            /* Reduced margin before separator */
+            margin-bottom: 0.8rem; 
+            font-size: 13px; 
+            line-height: 1.5; 
+        }
+
+        .softbox p {
+            margin-bottom: 0.6rem;
+        }
+
+        .softbox p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* SEPARATOR LINE STYLE */
+        hr.separator {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            /* Reduced margin after separator */
+            margin: 0 0 1rem 0; 
+            opacity: 0.6;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            /* Tighter row gap */
+            row-gap: 0.3rem;
+            column-gap: 1rem;
+            font-size: 13px;
+        }
+
+        .label {
+            color: var(--text-muted);
+        }
+
+        .value {
+            color: var(--text-main);
+        }
+
+        /* Link Styling */
+        .value a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .value a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        /* Container for multiple links */
+        .link-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Skill Hover */
+        .skill-item {
+            cursor: default;
+            transition: color 0.2s ease;
+        }
+
+        .skill-item:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+        }
+
+        /* Footer - BOTTOM RIGHT */
+        footer {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+            align-items: center;
+            
+            gap: 0.5rem;
+            color: #777; 
+            font-size: 11px;
+            padding-top: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+            border-bottom: 1px dotted #777;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .terminal-card { padding: 1.2rem; }
+            .info-grid { grid-template-columns: 1fr; gap: 0.2rem; }
+            .label { margin-top: 0.6rem; font-size: 0.8rem; }
+            footer { 
+                flex-direction: column; 
+                text-align: center; 
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <span>snawf.my.id</span>
+    </nav>
+
+    <main>
+        <div class="terminal-card">
+            
+            <div class="header-group">
+                <img src="hdfav120color.png" alt="Logo" class="logo">
+                <h1>Henry Dennis</h1>
+                <span class="role">Software Engineer</span>
+            </div>
+
+            <div class="softbox">
+                <p>
+                    Passionate about building scalable software and robust infrastructure. 
+                    When I'm not writing code, I'm optimizing my homelab, managing Proxmox clusters, 
+                    or exploring the depths of self-hosted open-source solutions.
+                </p>
+                <p>
+                    Currently focused on automation and cloud-native technologies, 
+                    always looking for the next efficient workflow to implement.
+                </p>
+            </div>
+
+            <hr class="separator">
+
+            <div class="info-grid">
+                
+                <div class="label">📍 Location</div>
+                <div class="value">Jakarta 🇮🇩</div>
+
+                <div class="label">💼 Work</div>
+                <div class="value">Software Engineer</div>
+
+                <div class="label">⚡ Interests</div>
+                <div class="value">Homelab, Proxmox, Self-hosting</div>
+
+                <div class="label">🛠️ Skill</div>
+                <div class="value">
+                    <span class="skill-item">Linux</span>, 
+                    <span class="skill-item">Docker</span>, 
+                    <span class="skill-item">Python</span>, 
+                    <span class="skill-item">SQL</span>
+                </div>
+
+                <div class="label">📮 Contact</div>
+                <div class="value"><a href="mailto:your@email.com">your@email.com</a></div>
+
+                <div class="label">🔗 Link</div>
+                <div class="value link-container">
+                    <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
+                    <a href="https://kb.snawf.my.id" target="_blank">Knowledge Base</a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+        <span>2021-PRESENT © henrydns</span>
+    </footer>
+
+</body>
+</html>
