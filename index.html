@@ -10,9 +10,8 @@
 
     <style>
         :root {
-            --bg-image: url('bg.webp');
-            --card-bg-transparent: rgba(35, 36, 38, 0.40); 
-            --softbox-bg-transparent: rgba(45, 46, 48, 0.4); 
+            --card-bg-transparent: rgba(35, 36, 38, 0.30); 
+            --softbox-bg-transparent: rgba(45, 46, 48, 0.30); 
             --border-color: #444746;
             --text-main: #E3E3E3;
             --text-muted: #9AA0A6;
@@ -22,10 +21,9 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-    background-color: #131314; /* Your base dark color */
-    
-    /* This generates a subtle grain texture using code */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    background-color: #050505;    
+    background-image: url("bg.png"); 
+    background-blend-mode: multiply;   
     
     color: var(--text-main);
     font-family: 'IBM Plex Mono', monospace;
@@ -58,8 +56,8 @@
             width: 100%;
             max-width: 680px;
             background-color: var(--card-bg-transparent);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 1.8rem;
