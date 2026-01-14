@@ -5,155 +5,395 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>snawf.my.id</title>
     <link rel="icon" type="image/png" href="https://docs.snawf.my.id/assets/hdfav60.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --card-bg-transparent: rgba(35, 36, 38, 0.30); 
-            --softbox-bg-transparent: rgba(45, 46, 48, 0.30); 
-            --border-color: #444746;
-            --text-main: #E3E3E3;
-            --text-muted: #9AA0A6;
-            --accent-color: #58a6ff; 
+            --bg-deep-slate: #202124;
+            --bg-charcoal: #25282b;
+            --bg-dark-slate: #2a2d30;
+            --text-soft-white: #e8e8e8;
+            --text-light-gray: #c5c5c5;
+            --text-muted: #8f8f8f;
+            --color-1: #c0a952;
+            --color-2: #45379B;
+            --color-3: #F6ACB4;
+            --color-4: #D65987;
+            --color-5: #44BFF1;
+            --border-color: #35383b;
+            --card-bg-transparent: rgba(32, 33, 36, 0.92);
+            --softbox-bg-transparent: rgba(42, 45, 48, 0.7);
+            --glow-gold: rgba(192, 169, 82, 0.3);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-    background-color: #050505;    
-    background-image: url("bg.png"); 
-    background-blend-mode: multiply;   
-    
-    color: var(--text-main);
-    font-family: 'IBM Plex Mono', monospace;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 2rem;
-    font-size: 13px; 
-    line-height: 1.4; 
-}
+            background-color: var(--bg-deep-slate);
+            color: var(--text-soft-white);
+            font-family: 'IBM Plex Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem;
+            font-size: 13px;
+            line-height: 1.4;
+        }
 
         nav {
             width: 100%;
-            max-width: 750px;
+            max-width: 900px;
             margin: 0 auto 0.8rem;
-            color: var(--text-muted);
+            color: var(--color-5);
             font-weight: 700;
             font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav::before {
+            content: '~$ ';
+            color: var(--color-1);
+            margin-right: 4px;
         }
 
         main {
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: flex-start; 
-            flex-grow: 1; 
+            align-items: flex-start;
+            flex-grow: 1;
         }
 
         .terminal-card {
             width: 100%;
-            max-width: 750px;
+            max-width: 900px;
             background-color: var(--card-bg-transparent);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .header-group { margin-bottom: 1rem; }
+        .terminal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                var(--color-1),
+                var(--color-5),
+                var(--color-2),
+                var(--color-4),
+                var(--color-3)
+            );
+            z-index: 1;
+        }
 
-        .logo { width: 42px; height: auto; margin-bottom: 0.8rem; display: block; }
+        .header-group { 
+            margin-bottom: 1rem; 
+            position: relative;
+        }
+
+        .logo { 
+            width: 42px; 
+            height: auto; 
+            margin-bottom: 0.8rem; 
+            display: block;
+        }
 
         h1 {
-            font-size: 1.25rem; font-weight: 700; margin-bottom: 0.1rem;
-            color: #ffffff; letter-spacing: -0.5px;
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            margin-bottom: 0.1rem;
+            color: var(--text-soft-white); 
+            letter-spacing: -0.5px;
         }
 
-        .role { color: var(--accent-color); font-size: 0.85rem; font-weight: 500; }
+        .role { 
+            color: var(--color-5); 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(68, 191, 241, 0.1);
+            border-radius: 3px;
+            border-left: 2px solid var(--color-5);
+        }
 
         .softbox {
             background-color: var(--softbox-bg-transparent);
-            border-radius: 4px;
-            padding: 1rem;
-            color: var(--text-main);
-            margin-bottom: 0.8rem; 
-            font-size: 13px; 
-            line-height: 1.5; 
+            border-radius: 6px;
+            padding: 1.2rem;
+            color: var(--text-light-gray);
+            margin-bottom: 1rem;
+            font-size: 13px;
+            line-height: 1.6;
+            border: 1px solid var(--border-color);
         }
-        .softbox p { margin-bottom: 0.6rem; }
+
+        .softbox p { 
+            margin-bottom: 0.8rem; 
+        }
         .softbox p:last-child { margin-bottom: 0; }
+
+        .color-palette {
+            display: flex;
+            gap: 6px;
+            margin: 1rem 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 28px;
+            flex: 1;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .color-item:hover {
+            transform: translateY(-1px);
+            filter: brightness(110%);
+        }
 
         hr.separator {
             border: 0;
             border-top: 1px solid var(--border-color);
-            margin: 0 0 1rem 0; 
+            margin: 1rem 0;
             opacity: 0.6;
         }
 
         .info-grid {
             display: grid;
             grid-template-columns: 110px 1fr;
-            row-gap: 0.3rem;
-            column-gap: 1rem;
+            row-gap: 0.5rem;
+            column-gap: 1.5rem;
             font-size: 13px;
         }
 
-        .label { color: var(--text-muted); }
-        .value { color: var(--text-main); }
+        .label { 
+            color: var(--color-5);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            padding-top: 2px;
+        }
+
+        .value { 
+            color: var(--text-light-gray); 
+            line-height: 1.5;
+        }
 
         .value a {
-            color: var(--accent-color);
+            color: var(--color-5);
             text-decoration: none;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            padding: 1px 4px;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
         }
-        .value a:hover { text-decoration: underline; opacity: 0.8; }
 
-        .link-container { display: flex; gap: 1rem; }
+        .value a:not(.contact-email)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(68, 191, 241, 0.1), 
+                transparent
+            );
+            transition: left 0.6s;
+        }
 
-        .skill-item { cursor: default; transition: color 0.2s ease; }
+        .value a:not(.contact-email):hover::before {
+            left: 100%;
+        }
+
+        .value a:hover { 
+            color: var(--color-1);
+            background: rgba(192, 169, 82, 0.1);
+            text-decoration: none;
+        }
+
+        .value a::after {
+            content: '↗';
+            margin-left: 2px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .link-container { 
+            display: flex; 
+            gap: 1rem;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .link-container::-webkit-scrollbar {
+            height: 2px;
+        }
+
+        .link-container::-webkit-scrollbar-track {
+            background: rgba(68, 191, 241, 0.1);
+        }
+
+        .link-container::-webkit-scrollbar-thumb {
+            background: var(--color-5);
+        }
+
+        .skill-item { 
+            cursor: default; 
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-right: 6px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: rgba(192, 169, 82, 0.15);
+            border: 1px solid rgba(192, 169, 82, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
         .skill-item:hover {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+            color: var(--color-1);
+            background: rgba(192, 169, 82, 0.25);
+            border-color: rgba(192, 169, 82, 0.4);
+            box-shadow: 0 0 20px var(--glow-gold);
+            transform: translateY(-2px);
+            animation: skillGlow 1.5s infinite alternate;
+        }
+
+        @keyframes skillGlow {
+            0% {
+                box-shadow: 0 0 15px var(--glow-gold);
+            }
+            100% {
+                box-shadow: 0 0 25px var(--glow-gold);
+            }
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(192, 169, 82, 0.1), 
+                transparent
+            );
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .skill-item:hover::before {
+            opacity: 1;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .contact-email {
+            transition: all 0.2s ease;
+            padding: 1px 4px;
+            border-radius: 2px;
+            color: var(--color-5);
+            text-decoration: none;
+        }
+
+        .contact-email:hover {
+            color: var(--color-1);
+            background: rgba(192, 169, 82, 0.1);
         }
 
         footer {
             width: 100%;
+            max-width: 900px;
+            margin: 1.5rem auto 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
-            color: #777; 
+            color: var(--text-muted);
             font-size: 11px;
             padding-top: 1.5rem;
-            letter-spacing: 0.5px;
-        }
-        footer a {
-            color: #777;
-            text-decoration: none;
-            border-bottom: 1px dotted #777;
-            transition: color 0.2s;
-        }
-        footer a:hover {
-            color: var(--accent-color);
-            border-bottom: 1px solid var(--accent-color);
+            border-top: 1px solid var(--border-color);
         }
 
-        @media (max-width: 600px) {
+        footer a {
+            color: var(--color-5);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--color-5);
+            transition: all 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--color-1);
+            border-bottom: 1px solid var(--color-1);
+        }
+
+        @media (max-width: 700px) {
             body { padding: 1rem; }
-            .terminal-card { padding: 1.2rem; }
-            .info-grid { grid-template-columns: 1fr; gap: 0.2rem; }
-            .label { margin-top: 0.6rem; font-size: 0.8rem; }
-            footer { flex-direction: column; text-align: center; justify-content: center; }
+            .terminal-card { 
+                padding: 1.2rem;
+                max-width: 100%;
+            }
+            .info-grid { grid-template-columns: 1fr; gap: 0.3rem; }
+            .label { margin-top: 0.8rem; font-size: 0.8rem; }
+            .link-container { 
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+            .color-palette {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .color-item {
+                flex: 0 0 calc(33.333% - 4px);
+                height: 26px;
+                font-size: 0.7rem;
+            }
+            footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+
+        @media (max-width: 1000px) {
+            .terminal-card {
+                max-width: 95%;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
-        <span>snawf.my.id</span>
+        snawf.my.id
     </nav>
     <main>
         <div class="terminal-card">
@@ -164,8 +404,17 @@
             </div>
 
             <div class="softbox">
-                <p>I like building software and tinkering with servers. I host almost everything myself. media servers, dashboards, and docs on a Proxmox setup that I'm constantly optimizing.</p>
+                <p>I like building software and tinkering with servers. I host almost everything myself: media servers, dashboards, and docs on a Proxmox setup that I'm constantly optimizing.</p>
                 <p>I care about privacy and keeping things open-source. Basically, if it can be self-hosted, I'm probably running it.</p>
+            </div>
+
+            <div class="color-palette">
+                <div class="color-item" style="background-color: #202124; color: #e8e8e8;" data-color="#202124">Slate</div>
+                <div class="color-item" style="background-color: #c0a952; color: #202124;" data-color="#c0a952">Gold</div>
+                <div class="color-item" style="background-color: #45379B; color: #e8e8e8;" data-color="#45379B">Purple</div>
+                <div class="color-item" style="background-color: #F6ACB4; color: #202124;" data-color="#F6ACB4">Pink</div>
+                <div class="color-item" style="background-color: #D65987; color: #e8e8e8;" data-color="#D65987">Rose</div>
+                <div class="color-item" style="background-color: #44BFF1; color: #202124;" data-color="#44BFF1">Sky</div>
             </div>
 
             <hr class="separator">
@@ -175,19 +424,21 @@
                 <div class="value">Jakarta 🇮🇩</div>
 
                 <div class="label">💼 Work</div>
-                <div class="value">IT Support </div>
+                <div class="value">IT Support</div>
 
                 <div class="label">⚡ Interests</div>
                 <div class="value">Homelab, Proxmox, Self-hosting</div>
 
                 <div class="label">📨 Contact</div>
-                <div class="value"><a href="mailto:pm@snawf.my.id">pm@snawf.my.id</a></div>
+                <div class="value">
+                    <a href="mailto:pm@snawf.my.id" class="contact-email">pm@snawf.my.id</a>
+                </div>
 
                 <div class="label">🛠️ Skill</div>
                 <div class="value">
-                    <span class="skill-item">Linux</span>, 
-                    <span class="skill-item">Docker</span>,
-                    <span class="skill-item">Python</span>, 
+                    <span class="skill-item">Linux</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Python</span>
                     <span class="skill-item">SQL</span>
                 </div>
 
@@ -195,17 +446,42 @@
                 <div class="value link-container">
                     <a href="https://github.com/onthecouch" target="_blank">GitHub</a>
                     <a href="https://kb.snawf.my.id" target="_blank">Private Docs</a>
-                    <a href="https://docs.snawf.my.id" target="blank">Public Docs</a>
+                    <a href="https://docs.snawf.my.id" target="_blank">Public Docs</a>
                     <a href="https://kit.snawf.my.id/" target="_blank">IT Tools</a>
                     <a href="https://pdf.snawf.my.id" target="_blank">PDF Editor</a>
-                    <a href="https://status.snawf.my.id" target="_blank">Status Page</a> 
+                    <a href="https://status.snawf.my.id" target="_blank">Status Page</a>
                 </div>
             </div>
         </div>
     </main>
+
     <footer>
         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
         <span>2021-PRESENT © henrydns</span>
     </footer>
+
+    <script>
+        const colorItems = document.querySelectorAll('.color-item');
+        
+        colorItems.forEach(item => {
+            item.addEventListener('click', async () => {
+                const color = item.getAttribute('data-color');
+                
+                try {
+                    await navigator.clipboard.writeText(color);
+                    const originalText = item.textContent;
+                    item.textContent = '✓';
+                    item.style.opacity = '0.8';
+                    
+                    setTimeout(() => {
+                        item.textContent = originalText;
+                        item.style.opacity = '1';
+                    }, 800);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
