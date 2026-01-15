@@ -13,21 +13,6 @@ I spend most of my time in terminals, so I wanted something that felt familiar. 
 The whole thing is just HTML and CSS. No JavaScript frameworks, no build process, no dependencies. It loads fast and works everywhere.
 
 
-## Skins/Themes
-
-I make custom CSS skins for various tools I use. If you love this color, feel free to use them:
-
-### Uptime Kuma Skin
-**Location:** `skins/uptime-kuma/index.css`
-**What it does:** A dark terminal-style theme for Uptime Kuma that uses my Ashbloom color palette. Makes my status page match the rest of my site's vibe.
-
-To use it:
-1. Copy the CSS from `skins/uptime-kuma/index.css`
-2. Paste it into Uptime Kuma's custom CSS field
-3. Save and refresh
-
-**More skins coming** as I build them for other tools I use.
-
 ## Tech Stuff (If You Care)
 
 * **HTML5** - Plain old semantic HTML
