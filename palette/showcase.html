@@ -40,7 +40,6 @@
         .logo {
             width: 120px;
             height: 120px;
-            /* REMOVED: border, background, padding */
             object-fit: contain;
         }
         
@@ -272,21 +271,22 @@
             <p class="inspiration-note">Inspired by the colors in my HD logo. No fancy color theory here - just what looked good after too many late nights tweaking hex values.</p>
         </div>
 
-        <!-- Full Palette Strip -->
+        <!-- Full Palette Strip - ADDED ASHBLOOM CREAM -->
         <div class="palette-strip">
-            <div class="palette-color" style="background-color: #202124; color: #e8e2d0;">SLATE</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+            <div class="palette-color" style="background-color: #202124; color: #e8e2d0;">SLATE</div>
             <div class="palette-color" style="background-color: #c0a952; color: #202124;">GOLD</div>
-            <div class="palette-color" style="background-color: #45379B; color: #e8e2d0;">PURPLE</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+            <div class="palette-color" style="background-color: #45379B; color: #e8e2d0;">PURPLE</div>
             <div class="palette-color" style="background-color: #F6ACB4; color: #202124;">PINK</div>
-            <div class="palette-color" style="background-color: #D65987; color: #e8e2d0;">ROSE</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+            <div class="palette-color" style="background-color: #D65987; color: #e8e2d0;">ROSE</div>
             <div class="palette-color" style="background-color: #44BFF1; color: #202124;">SKY</div>
+            <div class="palette-color" style="background-color: #e8e2d0; color: #202124;">CREAM</div> <!-- ADDED -->
         </div>
 
-        <!-- Individual Color Blocks -->
+        <!-- Individual Color Blocks - ADDED ASHBLOOM CREAM -->
         <div class="color-grid">
             <!-- Slate -->
             <div class="color-block">
-                <div class="color-swatch" style="background-color: #202124; color: #e8e2d0;"> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+                <div class="color-swatch" style="background-color: #202124; color: #e8e2d0;">
                     SLATE
                 </div>
                 <div class="color-info">
@@ -312,7 +312,7 @@
 
             <!-- Purple -->
             <div class="color-block">
-                <div class="color-swatch" style="background-color: #45379B; color: #e8e2d0;"> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+                <div class="color-swatch" style="background-color: #45379B; color: #e8e2d0;">
                     PURPLE
                 </div>
                 <div class="color-info">
@@ -338,7 +338,7 @@
 
             <!-- Rose -->
             <div class="color-block">
-                <div class="color-swatch" style="background-color: #D65987; color: #e8e2d0;"> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+                <div class="color-swatch" style="background-color: #D65987; color: #e8e2d0;">
                     ROSE
                 </div>
                 <div class="color-info">
@@ -361,9 +361,22 @@
                     <button class="copy-btn" data-color="#44BFF1">Copy HEX</button>
                 </div>
             </div>
+
+            <!-- Ashbloom Cream - ADDED -->
+            <div class="color-block">
+                <div class="color-swatch" style="background-color: #e8e2d0; color: #202124;">
+                    CREAM
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Ashbloom Cream</div>
+                    <div class="color-hex">#e8e2d0</div>
+                    <div class="color-var">--ashbloom-text-light</div>
+                    <button class="copy-btn" data-color="#e8e2d0">Copy HEX</button>
+                </div>
+            </div>
         </div>
 
-        <!-- Usage Example -->
+        <!-- Usage Example - UPDATED TO INCLUDE CREAM -->
         <div class="usage">
             <h2>How to Use</h2>
             <pre><code><span class="comment">/* Include the palette */</span>
@@ -372,14 +385,18 @@
 <span class="comment">/* Use CSS variables */</span>
 <span class="property">.my-element</span> {
     <span class="property">background-color:</span> <span class="value">var(--ashbloom-slate)</span>;
-    <span class="property">color:</span> <span class="value">var(--ashbloom-gold)</span>;
+    <span class="property">color:</span> <span class="value">var(--ashbloom-text-light)</span>; <span class="comment">/* Ashbloom Cream */</span>
     <span class="property">border:</span> <span class="value">1px solid var(--ashbloom-border)</span>;
 }
 
 <span class="comment">/* Or use utility classes */</span>
 <span class="property">&lt;div</span> <span class="value">class="ashbloom-bg-gold ashbloom-text-slate"</span><span class="property">&gt;</span>
     Gold background, dark text
-<span class="property">&lt;/div&gt;</span></code></pre>
+<span class="property">&lt;/div&gt;</span>
+
+<span class="comment">/* Text color utilities */</span>
+<span class="property">&lt;p</span> <span class="value">class="ashbloom-text-light"</span><span class="property">&gt;</span>Ashbloom Cream text<span class="property">&lt;/p&gt;</span>
+<span class="property">&lt;p</span> <span class="value">class="ashbloom-text-muted"</span><span class="property">&gt;</span>Muted text<span class="property">&lt;/p&gt;</span></code></pre>
         </div>
 
         <footer>
