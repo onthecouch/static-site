@@ -12,9 +12,9 @@
             --bg-deep-slate: #202124;
             --bg-charcoal: #25282b;
             --bg-dark-slate: #2a2d30;
-            --text-soft-white: #e8e8e8;
-            --text-light-gray: #c5c5c5;
-            --text-muted: #8f8f8f;
+            --text-soft-white: #e8e2d0; /* CHANGED: #e8e8e8 → #e8e2d0 (Ashbloom Cream) */
+            --text-light-gray: #c5baa0; /* CHANGED: #c5c5c5 → #c5baa0 (medium cream) */
+            --text-muted: #a09880; /* CHANGED: #8f8f8f → #a09880 (muted cream) */
             --color-1: #c0a952;
             --color-2: #45379B;
             --color-3: #F6ACB4;
@@ -30,7 +30,7 @@
 
         body {
             background-color: var(--bg-deep-slate);
-            color: var(--text-soft-white);
+            color: var(--text-soft-white); /* Now Ashbloom Cream */
             font-family: 'IBM Plex Mono', monospace;
             display: flex;
             flex-direction: column;
@@ -111,7 +111,7 @@
             font-size: 1.25rem; 
             font-weight: 700; 
             margin-bottom: 0.1rem;
-            color: var(--text-soft-white); 
+            color: var(--text-soft-white); /* Now Ashbloom Cream */
             letter-spacing: -0.5px;
         }
 
@@ -130,7 +130,7 @@
             background-color: var(--softbox-bg-transparent);
             border-radius: 6px;
             padding: 1.2rem;
-            color: var(--text-light-gray);
+            color: var(--text-light-gray); /* Now medium cream */
             margin-bottom: 1rem;
             font-size: 13px;
             line-height: 1.6;
@@ -198,7 +198,7 @@
         }
 
         .value { 
-            color: var(--text-light-gray); 
+            color: var(--text-light-gray); /* Now medium cream */
             line-height: 1.5;
         }
 
@@ -342,7 +342,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-muted);
+            color: var(--text-muted); /* Now muted cream */
             font-size: 11px;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border-color);
@@ -377,7 +377,7 @@
                 gap: 4px;
             }
             .color-item {
-                flex: 0 0 calc(33.333% - 4px);
+                flex: 0 0 calc(16.666% - 4px);
                 height: 26px;
                 font-size: 0.7rem;
             }
@@ -409,12 +409,13 @@
             </div>
 
             <div class="color-palette">
-                <div class="color-item" style="background-color: #202124; color: #e8e8e8;" data-color="#202124">Slate</div>
-                <div class="color-item" style="background-color: #c0a952; color: #202124;" data-color="#c0a952">Gold</div>
-                <div class="color-item" style="background-color: #45379B; color: #e8e8e8;" data-color="#45379B">Purple</div>
+                <div class="color-item" style="background-color: #D65987; color: #e8e2d0;" data-color="#D65987">Rose</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
                 <div class="color-item" style="background-color: #F6ACB4; color: #202124;" data-color="#F6ACB4">Pink</div>
-                <div class="color-item" style="background-color: #D65987; color: #e8e8e8;" data-color="#D65987">Rose</div>
+                <div class="color-item" style="background-color: #c0a952; color: #202124;" data-color="#c0a952">Gold</div>
+                <div class="color-item" style="background-color: #e8e2d0; color: #202124;" data-color="#e8e2d0">Cream</div>
                 <div class="color-item" style="background-color: #44BFF1; color: #202124;" data-color="#44BFF1">Sky</div>
+                <div class="color-item" style="background-color: #45379B; color: #e8e2d0;" data-color="#45379B">Purple</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+                <div class="color-item" style="background-color: #202124; color: #e8e2d0;" data-color="#202124">Slate</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
             </div>
 
             <hr class="separator">
