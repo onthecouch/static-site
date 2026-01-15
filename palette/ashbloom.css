@@ -20,10 +20,10 @@
   --ashbloom-sky:        #44BFF1;  /* Sky blue - info/link accent */
   
   /* Text & UI */
-  --ashbloom-text-light: #e8e8e8;  /* Light text on dark */
+  --ashbloom-text-light: #e8e2d0;  /* Ashbloom Cream - primary text */
   --ashbloom-text-dark:  #202124;  /* Dark text on light */
   --ashbloom-border:     #35383b;  /* Border color */
-  --ashbloom-muted:      #8f8f8f;  /* Muted secondary text */
+  --ashbloom-muted:      #a09880;  /* Muted cream-gray */
 }
 
 /* ===== ASHBLOOM SEMANTIC ALIASES ===== */
