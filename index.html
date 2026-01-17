@@ -10,16 +10,15 @@
     <style>
         :root {
             --bg-deep-slate: #202124;
-            --bg-charcoal: #25282b;
-            --bg-dark-slate: #2a2d30;
-            --text-soft-white: #e8e2d0; /* CHANGED: #e8e8e8 → #e8e2d0 (Ashbloom Cream) */
-            --text-light-gray: #c5baa0; /* CHANGED: #c5c5c5 → #c5baa0 (medium cream) */
-            --text-muted: #a09880; /* CHANGED: #8f8f8f → #a09880 (muted cream) */
-            --color-1: #c0a952;
-            --color-2: #45379B;
-            --color-3: #F6ACB4;
-            --color-4: #D65987;
-            --color-5: #44BFF1;
+            --text-soft-white: #e8e2d0; 
+            --text-light-gray: #c5baa0; 
+            --text-muted: #a09880; 
+            --color-1: #c0a952; /* Gold */
+            --color-2: #45379B; /* Purple */
+            --color-3: #F6ACB4; /* Pink */
+            --color-4: #D65987; /* Rose */
+            --color-5: #44BFF1; /* Sky */
+            
             --border-color: #35383b;
             --card-bg-transparent: rgba(32, 33, 36, 0.92);
             --softbox-bg-transparent: rgba(42, 45, 48, 0.7);
@@ -30,14 +29,17 @@
 
         body {
             background-color: var(--bg-deep-slate);
-            color: var(--text-soft-white); /* Now Ashbloom Cream */
+            color: var(--text-soft-white);
             font-family: 'IBM Plex Mono', monospace;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             padding: 2rem;
-            font-size: 13px;
+            
+            font-size: 12px; 
             line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         nav {
@@ -46,7 +48,7 @@
             margin: 0 auto 0.8rem;
             color: var(--color-5);
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 12px; /* Matches body */
             letter-spacing: 0.5px;
         }
 
@@ -86,11 +88,11 @@
             right: 0;
             height: 2px;
             background: linear-gradient(90deg, 
-                var(--color-4),
-                var(--color-3),
-                var(--color-1),
-                var(--color-5),
-                var(--color-2)
+                var(--color-4), /* Rose */
+                var(--color-3), /* Pink */
+                var(--color-1), /* Gold */
+                var(--color-5), /* Sky */
+                var(--color-2)  /* Purple */
             );
             z-index: 1;
         }
@@ -111,7 +113,7 @@
             font-size: 1.25rem; 
             font-weight: 700; 
             margin-bottom: 0.1rem;
-            color: var(--text-soft-white); /* Now Ashbloom Cream */
+            color: var(--text-soft-white);
             letter-spacing: -0.5px;
         }
 
@@ -130,9 +132,9 @@
             background-color: var(--softbox-bg-transparent);
             border-radius: 6px;
             padding: 1.2rem;
-            color: var(--text-light-gray); /* Now medium cream */
+            color: var(--text-light-gray);
             margin-bottom: 1rem;
-            font-size: 13px;
+            font-size: 12px; /* Explicitly 12px */
             line-height: 1.6;
             border: 1px solid var(--border-color);
         }
@@ -144,7 +146,7 @@
 
         .color-palette {
             display: flex;
-            gap: 6px;
+            gap: 4px; 
             margin: 1rem 0;
             padding: 0;
             justify-content: center;
@@ -156,9 +158,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 28px;
+            height: 22px; /* Compact */
             flex: 1;
-            font-size: 0.75rem;
+            font-size: 11px; /* Compact */
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -185,7 +187,7 @@
             grid-template-columns: 110px 1fr;
             row-gap: 0.5rem;
             column-gap: 1.5rem;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .label { 
@@ -198,7 +200,7 @@
         }
 
         .value { 
-            color: var(--text-light-gray); /* Now medium cream */
+            color: var(--text-light-gray);
             line-height: 1.5;
         }
 
@@ -287,12 +289,8 @@
         }
 
         @keyframes skillGlow {
-            0% {
-                box-shadow: 0 0 15px var(--glow-gold);
-            }
-            100% {
-                box-shadow: 0 0 25px var(--glow-gold);
-            }
+            0% { box-shadow: 0 0 15px var(--glow-gold); }
+            100% { box-shadow: 0 0 25px var(--glow-gold); }
         }
 
         .skill-item::before {
@@ -342,7 +340,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-muted); /* Now muted cream */
+            color: var(--text-muted); 
             font-size: 11px;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border-color);
@@ -377,17 +375,11 @@
                 gap: 4px;
             }
             .color-item {
-                flex: 0 0 calc(16.666% - 4px);
-                height: 26px;
-                font-size: 0.7rem;
+                flex: 0 0 calc(25% - 4px);
+                height: 24px;
+                font-size: 0.65rem;
             }
             footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-        }
-
-        @media (max-width: 1000px) {
-            .terminal-card {
-                max-width: 95%;
-            }
         }
     </style>
 </head>
@@ -409,13 +401,14 @@
             </div>
 
             <div class="color-palette">
-                <div class="color-item" style="background-color: #D65987; color: #e8e2d0;" data-color="#D65987">Rose</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
-                <div class="color-item" style="background-color: #F6ACB4; color: #202124;" data-color="#F6ACB4">Pink</div>
-                <div class="color-item" style="background-color: #c0a952; color: #202124;" data-color="#c0a952">Gold</div>
+                <div class="color-item" style="background-color: #F04770; color: #202124;" data-color="#F04770">Rose</div>
+                <div class="color-item" style="background-color: #FF9E64; color: #202124;" data-color="#FF9E64">Orng</div>
+                <div class="color-item" style="background-color: #F2CD60; color: #202124;" data-color="#F2CD60">Gold</div>
+                <div class="color-item" style="background-color: #6DEcb9; color: #202124;" data-color="#6DEcb9">Mint</div>
+                <div class="color-item" style="background-color: #3DD6F5; color: #202124;" data-color="#3DD6F5">Cyan</div>
+                <div class="color-item" style="background-color: #9E86FF; color: #202124;" data-color="#9E86FF">Prpl</div>
                 <div class="color-item" style="background-color: #e8e2d0; color: #202124;" data-color="#e8e2d0">Cream</div>
-                <div class="color-item" style="background-color: #44BFF1; color: #202124;" data-color="#44BFF1">Sky</div>
-                <div class="color-item" style="background-color: #45379B; color: #e8e2d0;" data-color="#45379B">Purple</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
-                <div class="color-item" style="background-color: #202124; color: #e8e2d0;" data-color="#202124">Slate</div> <!-- CHANGED: #e8e8e8 → #e8e2d0 -->
+                <div class="color-item" style="background-color: #202124; color: #e8e2d0;" data-color="#202124">Slate</div>
             </div>
 
             <hr class="separator">

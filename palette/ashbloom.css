@@ -1,139 +1,84 @@
 /* ===================================================
-   ASHBLOOM PALETTE v1.0
+   ASHBLOOM PALETTE
    https://snawf.my.id
-   A dark foundation with blooming color accents
+   Vibrant clarity in a quiet void
    Created by henrydns
 =================================================== */
 
-/* ===== ASHBLOOM CORE COLORS ===== */
+/* ===== ASHBLOOM CORE VARIABLES ===== */
 :root {
-  /* Foundation - The "Ash" */
-  --ashbloom-slate:      #202124;  /* Deep slate - main background */
-  --ashbloom-charcoal:   #25282b;  /* Medium charcoal - secondary bg */
-  --ashbloom-dark-slate: #2a2d30;  /* Dark slate - tertiary surfaces */
+  /* Foundation */
+  --ashbloom-slate:      #202124;  /* Main Background */
+  --ashbloom-cream:      #e8e2d0;  /* Main Text */
   
-  /* Blooms - The "Bloom" colors */
-  --ashbloom-gold:       #c0a952;  /* Golden amber - primary accent */
-  --ashbloom-purple:     #45379B;  /* Deep purple - secondary accent */
-  --ashbloom-pink:       #F6ACB4;  /* Soft pink - tertiary accent */
-  --ashbloom-rose:       #D65987;  /* Vibrant rose - highlight accent */
-  --ashbloom-sky:        #44BFF1;  /* Sky blue - info/link accent */
+  /* The Pop Accents */
+  --ashbloom-rose:       #F04770;  /* Error / Heat */
+  --ashbloom-orange:     #FF9E64;  /* Warmth / Constants */
+  --ashbloom-gold:       #F2CD60;  /* Warning / Strings */
+  --ashbloom-mint:       #6DEcb9;  /* Success / Safe */
+  --ashbloom-cyan:       #3DD6F5;  /* Info / Methods */
+  --ashbloom-purple:     #9E86FF;  /* Accent / Keywords */
   
-  /* Text & UI */
-  --ashbloom-text-light: #e8e2d0;  /* Ashbloom Cream - primary text */
-  --ashbloom-text-dark:  #202124;  /* Dark text on light */
-  --ashbloom-border:     #35383b;  /* Border color */
-  --ashbloom-muted:      #a09880;  /* Muted cream-gray */
+  /* UI Elements */
+  --ashbloom-bg:         var(--ashbloom-slate);
+  --ashbloom-text:       var(--ashbloom-cream);
+  --ashbloom-border:     #35383b;  /* Subtle border */
+  --ashbloom-muted:      #a09880;  /* Muted text */
 }
 
-/* ===== ASHBLOOM SEMANTIC ALIASES ===== */
-:root {
-  /* Backgrounds */
-  --ashbloom-bg-primary:   var(--ashbloom-slate);
-  --ashbloom-bg-secondary: var(--ashbloom-charcoal);
-  --ashbloom-bg-tertiary:  var(--ashbloom-dark-slate);
-  
-  /* Status Colors */
-  --ashbloom-success:      var(--ashbloom-gold);
-  --ashbloom-warning:      var(--ashbloom-pink);
-  --ashbloom-error:        var(--ashbloom-rose);
-  --ashbloom-info:         var(--ashbloom-sky);
-  --ashbloom-accent:       var(--ashbloom-purple);
-  
-  /* Text */
-  --ashbloom-text-primary:   var(--ashbloom-text-light);
-  --ashbloom-text-secondary: var(--ashbloom-muted);
-  --ashbloom-text-accent:    var(--ashbloom-sky);
-}
+/* ===== UTILITY CLASSES: BACKGROUNDS ===== */
+.ashbloom-bg-slate  { background-color: var(--ashbloom-slate) !important; }
+.ashbloom-bg-rose   { background-color: var(--ashbloom-rose) !important; }
+.ashbloom-bg-orange { background-color: var(--ashbloom-orange) !important; }
+.ashbloom-bg-gold   { background-color: var(--ashbloom-gold) !important; }
+.ashbloom-bg-mint   { background-color: var(--ashbloom-mint) !important; }
+.ashbloom-bg-cyan   { background-color: var(--ashbloom-cyan) !important; }
+.ashbloom-bg-purple { background-color: var(--ashbloom-purple) !important; }
+.ashbloom-bg-cream  { background-color: var(--ashbloom-cream) !important; }
 
-/* ===== ASHBLOOM UTILITY CLASSES ===== */
-/* Background colors */
-.ashbloom-bg-slate      { background-color: var(--ashbloom-slate) !important; }
-.ashbloom-bg-charcoal   { background-color: var(--ashbloom-charcoal) !important; }
-.ashbloom-bg-dark-slate { background-color: var(--ashbloom-dark-slate) !important; }
-.ashbloom-bg-gold       { background-color: var(--ashbloom-gold) !important; }
-.ashbloom-bg-purple     { background-color: var(--ashbloom-purple) !important; }
-.ashbloom-bg-pink       { background-color: var(--ashbloom-pink) !important; }
-.ashbloom-bg-rose       { background-color: var(--ashbloom-rose) !important; }
-.ashbloom-bg-sky        { background-color: var(--ashbloom-sky) !important; }
+/* ===== UTILITY CLASSES: TEXT ===== */
+.ashbloom-text-slate  { color: var(--ashbloom-slate) !important; }
+.ashbloom-text-rose   { color: var(--ashbloom-rose) !important; }
+.ashbloom-text-orange { color: var(--ashbloom-orange) !important; }
+.ashbloom-text-gold   { color: var(--ashbloom-gold) !important; }
+.ashbloom-text-mint   { color: var(--ashbloom-mint) !important; }
+.ashbloom-text-cyan   { color: var(--ashbloom-cyan) !important; }
+.ashbloom-text-purple { color: var(--ashbloom-purple) !important; }
+.ashbloom-text-cream  { color: var(--ashbloom-cream) !important; }
+.ashbloom-text-muted  { color: var(--ashbloom-muted) !important; }
 
-/* Text colors */
-.ashbloom-text-slate      { color: var(--ashbloom-slate) !important; }
-.ashbloom-text-gold       { color: var(--ashbloom-gold) !important; }
-.ashbloom-text-purple     { color: var(--ashbloom-purple) !important; }
-.ashbloom-text-pink       { color: var(--ashbloom-pink) !important; }
-.ashbloom-text-rose       { color: var(--ashbloom-rose) !important; }
-.ashbloom-text-sky        { color: var(--ashbloom-sky) !important; }
-.ashbloom-text-light      { color: var(--ashbloom-text-light) !important; }
-.ashbloom-text-muted      { color: var(--ashbloom-muted) !important; }
+/* ===== UTILITY CLASSES: BORDERS ===== */
+.ashbloom-border-rose   { border-color: var(--ashbloom-rose) !important; }
+.ashbloom-border-orange { border-color: var(--ashbloom-orange) !important; }
+.ashbloom-border-gold   { border-color: var(--ashbloom-gold) !important; }
+.ashbloom-border-mint   { border-color: var(--ashbloom-mint) !important; }
+.ashbloom-border-cyan   { border-color: var(--ashbloom-cyan) !important; }
+.ashbloom-border-purple { border-color: var(--ashbloom-purple) !important; }
 
-/* Border colors */
-.ashbloom-border-slate    { border-color: var(--ashbloom-slate) !important; }
-.ashbloom-border-gold     { border-color: var(--ashbloom-gold) !important; }
-.ashbloom-border-purple   { border-color: var(--ashbloom-purple) !important; }
-.ashbloom-border-pink     { border-color: var(--ashbloom-pink) !important; }
-.ashbloom-border-rose     { border-color: var(--ashbloom-rose) !important; }
-.ashbloom-border-sky      { border-color: var(--ashbloom-sky) !important; }
-
-/* ===== ASHBLOOM GRADIENT PRESETS ===== */
-.ashbloom-gradient-rainbow {
+/* ===== GRADIENTS ===== */
+.ashbloom-gradient-pop {
   background: linear-gradient(90deg,
-    var(--ashbloom-gold),
-    var(--ashbloom-sky),
-    var(--ashbloom-purple),
     var(--ashbloom-rose),
-    var(--ashbloom-pink)
-  ) !important;
-}
-
-.ashbloom-gradient-subtle {
-  background: linear-gradient(135deg,
-    var(--ashbloom-slate),
-    var(--ashbloom-charcoal),
-    var(--ashbloom-dark-slate)
+    var(--ashbloom-orange),
+    var(--ashbloom-gold),
+    var(--ashbloom-mint),
+    var(--ashbloom-cyan),
+    var(--ashbloom-purple)
   ) !important;
 }
 
 .ashbloom-gradient-warm {
   background: linear-gradient(90deg,
-    var(--ashbloom-gold),
     var(--ashbloom-rose),
-    var(--ashbloom-pink)
+    var(--ashbloom-orange),
+    var(--ashbloom-gold)
   ) !important;
 }
 
 .ashbloom-gradient-cool {
   background: linear-gradient(90deg,
-    var(--ashbloom-sky),
+    var(--ashbloom-mint),
+    var(--ashbloom-cyan),
     var(--ashbloom-purple)
   ) !important;
-}
-
-/* ===== ASHBLOOM COLOR THEMES ===== */
-/* Dark Theme (Default) */
-.ashbloom-theme-dark {
-  --bg-primary:   var(--ashbloom-slate);
-  --bg-secondary: var(--ashbloom-charcoal);
-  --text-primary: var(--ashbloom-text-light);
-  --text-secondary: var(--ashbloom-muted);
-  --accent:       var(--ashbloom-gold);
-  --border:       var(--ashbloom-border);
-}
-
-/* Gold Accent Theme */
-.ashbloom-theme-gold {
-  --bg-primary:   var(--ashbloom-slate);
-  --bg-secondary: var(--ashbloom-charcoal);
-  --text-primary: var(--ashbloom-text-light);
-  --accent:       var(--ashbloom-gold);
-  --accent-secondary: var(--ashbloom-sky);
-}
-
-/* Purple Accent Theme */
-.ashbloom-theme-purple {
-  --bg-primary:   var(--ashbloom-slate);
-  --bg-secondary: var(--ashbloom-charcoal);
-  --text-primary: var(--ashbloom-text-light);
-  --accent:       var(--ashbloom-purple);
-  --accent-secondary: var(--ashbloom-gold);
 }
