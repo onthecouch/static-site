@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,382 +8,56 @@
     <link rel="icon" type="image/png" href="https://docs.snawf.my.id/assets/hdfav60.png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-deep-slate: #202124;
-            --text-soft-white: #e8e2d0; 
-            --text-light-gray: #c5baa0; 
-            --text-muted: #a09880; 
-            --color-1: #c0a952; /* Gold */
-            --color-2: #45379B; /* Purple */
-            --color-3: #F6ACB4; /* Pink */
-            --color-4: #D65987; /* Rose */
-            --color-5: #44BFF1; /* Sky */
-            
-            --border-color: #35383b;
-            --card-bg-transparent: rgba(32, 33, 36, 0.92);
-            --softbox-bg-transparent: rgba(42, 45, 48, 0.7);
-            --glow-gold: rgba(192, 169, 82, 0.3);
-        }
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        body {
-            background-color: var(--bg-deep-slate);
-            color: var(--text-soft-white);
-            font-family: 'IBM Plex Mono', monospace;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 2rem;
-            
-            font-size: 12px; 
-            line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    <!-- Custom animations -->
+    <link rel="stylesheet" href="src/styles/animations.css">
 
-        nav {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto 0.8rem;
-            color: var(--color-5);
-            font-weight: 700;
-            font-size: 12px; /* Matches body */
-            letter-spacing: 0.5px;
-        }
-
-        nav::before {
-            content: '~$ ';
-            color: var(--color-1);
-            margin-right: 4px;
-        }
-
-        main {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-grow: 1;
-        }
-
-        .terminal-card {
-            width: 100%;
-            max-width: 900px;
-            background-color: var(--card-bg-transparent);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1.8rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .terminal-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                var(--color-4), /* Rose */
-                var(--color-3), /* Pink */
-                var(--color-1), /* Gold */
-                var(--color-5), /* Sky */
-                var(--color-2)  /* Purple */
-            );
-            z-index: 1;
-        }
-
-        .header-group { 
-            margin-bottom: 1rem; 
-            position: relative;
-        }
-
-        .logo { 
-            width: 42px; 
-            height: auto; 
-            margin-bottom: 0.8rem; 
-            display: block;
-        }
-
-        h1 {
-            font-size: 1.25rem; 
-            font-weight: 700; 
-            margin-bottom: 0.1rem;
-            color: var(--text-soft-white);
-            letter-spacing: -0.5px;
-        }
-
-        .role { 
-            color: var(--color-5); 
-            font-size: 0.85rem; 
-            font-weight: 500;
-            display: inline-block;
-            padding: 2px 8px;
-            background: rgba(68, 191, 241, 0.1);
-            border-radius: 3px;
-            border-left: 2px solid var(--color-5);
-        }
-
-        .softbox {
-            background-color: var(--softbox-bg-transparent);
-            border-radius: 6px;
-            padding: 1.2rem;
-            color: var(--text-light-gray);
-            margin-bottom: 1rem;
-            font-size: 12px; /* Explicitly 12px */
-            line-height: 1.6;
-            border: 1px solid var(--border-color);
-        }
-
-        .softbox p { 
-            margin-bottom: 0.8rem; 
-        }
-        .softbox p:last-child { margin-bottom: 0; }
-
-        .color-palette {
-            display: flex;
-            gap: 4px; 
-            margin: 1rem 0;
-            padding: 0;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .color-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 22px; /* Compact */
-            flex: 1;
-            font-size: 11px; /* Compact */
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-radius: 3px;
-            border: 1px solid var(--border-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .color-item:hover {
-            transform: translateY(-1px);
-            filter: brightness(110%);
-        }
-
-        hr.separator {
-            border: 0;
-            border-top: 1px solid var(--border-color);
-            margin: 1rem 0;
-            opacity: 0.6;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 110px 1fr;
-            row-gap: 0.5rem;
-            column-gap: 1.5rem;
-            font-size: 12px;
-        }
-
-        .label { 
-            color: var(--color-5);
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            padding-top: 2px;
-        }
-
-        .value { 
-            color: var(--text-light-gray);
-            line-height: 1.5;
-        }
-
-        .value a {
-            color: var(--color-5);
-            text-decoration: none;
-            transition: all 0.2s;
-            padding: 1px 4px;
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .value a:not(.contact-email)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(68, 191, 241, 0.1), 
-                transparent
-            );
-            transition: left 0.6s;
-        }
-
-        .value a:not(.contact-email):hover::before {
-            left: 100%;
-        }
-
-        .value a:hover { 
-            color: var(--color-1);
-            background: rgba(192, 169, 82, 0.1);
-            text-decoration: none;
-        }
-
-        .value a::after {
-            content: '↗';
-            margin-left: 2px;
-            font-size: 0.8em;
-            opacity: 0.7;
-        }
-
-        .link-container { 
-            display: flex; 
-            gap: 1rem;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-        .link-container::-webkit-scrollbar {
-            height: 2px;
-        }
-
-        .link-container::-webkit-scrollbar-track {
-            background: rgba(68, 191, 241, 0.1);
-        }
-
-        .link-container::-webkit-scrollbar-thumb {
-            background: var(--color-5);
-        }
-
-        .skill-item { 
-            cursor: default; 
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-right: 6px;
-            padding: 3px 10px;
-            border-radius: 4px;
-            background: rgba(192, 169, 82, 0.15);
-            border: 1px solid rgba(192, 169, 82, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item:hover {
-            color: var(--color-1);
-            background: rgba(192, 169, 82, 0.25);
-            border-color: rgba(192, 169, 82, 0.4);
-            box-shadow: 0 0 20px var(--glow-gold);
-            transform: translateY(-2px);
-            animation: skillGlow 1.5s infinite alternate;
-        }
-
-        @keyframes skillGlow {
-            0% { box-shadow: 0 0 15px var(--glow-gold); }
-            100% { box-shadow: 0 0 25px var(--glow-gold); }
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                transparent, 
-                rgba(192, 169, 82, 0.1), 
-                transparent
-            );
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .skill-item:hover::before {
-            opacity: 1;
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .contact-email {
-            transition: all 0.2s ease;
-            padding: 1px 4px;
-            border-radius: 2px;
-            color: var(--color-5);
-            text-decoration: none;
-        }
-
-        .contact-email:hover {
-            color: var(--color-1);
-            background: rgba(192, 169, 82, 0.1);
-        }
-
-        footer {
-            width: 100%;
-            max-width: 900px;
-            margin: 1.5rem auto 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-muted); 
-            font-size: 11px;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        footer a {
-            color: var(--color-5);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--color-5);
-            transition: all 0.2s;
-        }
-
-        footer a:hover {
-            color: var(--color-1);
-            border-bottom: 1px solid var(--color-1);
-        }
-
-        @media (max-width: 700px) {
-            body { padding: 1rem; }
-            .terminal-card { 
-                padding: 1.2rem;
-                max-width: 100%;
+    <!-- Tailwind configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ashbloom-slate': '#202124',
+                        'ashbloom-cream': '#e8e2d0',
+                        'ashbloom-rose': '#F04770',
+                        'ashbloom-orange': '#FF9E64',
+                        'ashbloom-gold': '#F2CD60',
+                        'ashbloom-mint': '#6DEcb9',
+                        'ashbloom-cyan': '#3DD6F5',
+                        'ashbloom-purple': '#9E86FF',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in-left': 'slideInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+                        'slide-in-right': 'slideInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'ripple': 'ripple 0.6s linear',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 12px rgba(0, 0, 0, 0.15)',
+                        'elevated': '0 8px 25px rgba(0, 0, 0, 0.25)',
+                        'floating': '0 12px 35px rgba(0, 0, 0, 0.35)',
+                        'glass': '0 8px 32px rgba(0, 0, 0, 0.25)',
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                }
             }
-            .info-grid { grid-template-columns: 1fr; gap: 0.3rem; }
-            .label { margin-top: 0.8rem; font-size: 0.8rem; }
-            .link-container { 
-                flex-wrap: wrap;
-                gap: 0.8rem;
-            }
-            .color-palette {
-                flex-wrap: wrap;
-                gap: 4px;
-            }
-            .color-item {
-                flex: 0 0 calc(25% - 4px);
-                height: 24px;
-                font-size: 0.65rem;
-            }
-            footer { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
-    </style>
+    </script>
 </head>
+
 <body>
     <nav>
         snawf.my.id
@@ -396,19 +71,29 @@
             </div>
 
             <div class="softbox">
-                <p>I like building software and tinkering with servers. I host almost everything myself: media servers, dashboards, and docs on a Proxmox setup that I'm constantly optimizing.</p>
-                <p>I care about privacy and keeping things open-source. Basically, if it can be self-hosted, I'm probably running it.</p>
+                <p>I like building software and tinkering with servers. I host almost everything myself: media servers,
+                    dashboards, and docs on a Proxmox setup that I'm constantly optimizing.</p>
+                <p>I care about privacy and keeping things open-source. Basically, if it can be self-hosted, I'm
+                    probably running it.</p>
             </div>
 
             <div class="color-palette">
-                <div class="color-item" style="background-color: #F04770; color: #202124;" data-color="#F04770">Rose</div>
-                <div class="color-item" style="background-color: #FF9E64; color: #202124;" data-color="#FF9E64">Orng</div>
-                <div class="color-item" style="background-color: #F2CD60; color: #202124;" data-color="#F2CD60">Gold</div>
-                <div class="color-item" style="background-color: #6DEcb9; color: #202124;" data-color="#6DEcb9">Mint</div>
-                <div class="color-item" style="background-color: #3DD6F5; color: #202124;" data-color="#3DD6F5">Cyan</div>
-                <div class="color-item" style="background-color: #9E86FF; color: #202124;" data-color="#9E86FF">Prpl</div>
-                <div class="color-item" style="background-color: #e8e2d0; color: #202124;" data-color="#e8e2d0">Cream</div>
-                <div class="color-item" style="background-color: #202124; color: #e8e2d0;" data-color="#202124">Slate</div>
+                <div class="color-item" style="background-color: #F04770; color: #202124;" data-color="#F04770">Rose
+                </div>
+                <div class="color-item" style="background-color: #FF9E64; color: #202124;" data-color="#FF9E64">Orng
+                </div>
+                <div class="color-item" style="background-color: #F2CD60; color: #202124;" data-color="#F2CD60">Gold
+                </div>
+                <div class="color-item" style="background-color: #6DEcb9; color: #202124;" data-color="#6DEcb9">Mint
+                </div>
+                <div class="color-item" style="background-color: #3DD6F5; color: #202124;" data-color="#3DD6F5">Cyan
+                </div>
+                <div class="color-item" style="background-color: #9E86FF; color: #202124;" data-color="#9E86FF">Prpl
+                </div>
+                <div class="color-item" style="background-color: #e8e2d0; color: #202124;" data-color="#e8e2d0">Cream
+                </div>
+                <div class="color-item" style="background-color: #202124; color: #e8e2d0;" data-color="#202124">Slate
+                </div>
             </div>
 
             <hr class="separator">
@@ -448,33 +133,155 @@
     </main>
 
     <footer>
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
-    <a href="/palette/showcase.html" target="_blank">Ashbloom Palette</a>
-    <span>2021-PRESENT © henrydns</span>
-</footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+        <a href="/palette/showcase.html" target="_blank">Ashbloom Palette</a>
+        <span>2021-PRESENT © henrydns</span>
+    </footer>
 
     <script>
+        // Enhanced color copy functionality with subtle animations
         const colorItems = document.querySelectorAll('.color-item');
-        
+
         colorItems.forEach(item => {
             item.addEventListener('click', async () => {
                 const color = item.getAttribute('data-color');
-                
+
                 try {
                     await navigator.clipboard.writeText(color);
                     const originalText = item.textContent;
                     item.textContent = '✓';
                     item.style.opacity = '0.8';
-                    
+                    item.style.transform = 'scale(1.1)';
+
                     setTimeout(() => {
                         item.textContent = originalText;
                         item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
                     }, 800);
                 } catch (err) {
                     console.error('Failed to copy:', err);
                 }
             });
         });
+
+        // Subtle entrance animations for content
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.softbox, .color-palette, .info-grid');
+
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Logo floating animation
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.style.transition = 'transform 3s ease-in-out';
+                setInterval(() => {
+                    logo.style.transform = 'translateY(' + (Math.random() * 4 - 2) + 'px)';
+                }, 3000);
+            }
+
+            // Surprise Me Effect
+            const roleElement = document.querySelector('.role');
+            let isSurpriseActive = false;
+            let particleInterval;
+
+            roleElement.addEventListener('click', () => {
+                isSurpriseActive = !isSurpriseActive;
+
+                if (isSurpriseActive) {
+                    // Activate surprise effects
+                    document.body.classList.add('surprise-active');
+                    roleElement.textContent = 'Surprise Mode: ON ✨';
+                    roleElement.style.background = 'rgba(242, 205, 96, 0.2)';
+                    roleElement.style.color = '#F2CD60';
+                    roleElement.style.borderColor = '#F2CD60';
+
+                    // Create floating particles
+                    createParticles();
+
+                    // Play subtle sound effect (optional)
+                    playSurpriseSound();
+                } else {
+                    // Deactivate surprise effects
+                    document.body.classList.remove('surprise-active');
+                    roleElement.textContent = 'Software Engineer';
+                    roleElement.style.background = 'rgba(68, 191, 241, 0.1)';
+                    roleElement.style.color = 'var(--color-5)';
+                    roleElement.style.borderColor = 'var(--color-5)';
+
+                    // Stop particles
+                    if (particleInterval) {
+                        clearInterval(particleInterval);
+                    }
+                }
+            });
+
+            function createParticles() {
+                // Remove existing particles
+                document.querySelectorAll('.surprise-particle').forEach(p => p.remove());
+
+                // Create new particles
+                particleInterval = setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'surprise-particle';
+
+                    // Random position
+                    const randomX = Math.random() * window.innerWidth;
+                    particle.style.left = randomX + 'px';
+
+                    // Random color from palette
+                    const colors = ['#F04770', '#FF9E64', '#F2CD60', '#6DEcb9', '#3DD6F5', '#9E86FF'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.background = randomColor;
+
+                    // Random size
+                    const size = Math.random() * 6 + 2;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+
+                    document.body.appendChild(particle);
+
+                    // Remove after animation
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 4000);
+                }, 200);
+            }
+
+            function playSurpriseSound() {
+                // Create a subtle audio effect using Web Audio API
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+                    oscillator.frequency.exponentialRampToValueAtTime(1046.50, audioContext.currentTime + 0.3); // C6
+
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.3);
+                } catch (e) {
+                    // Audio API not supported or blocked
+                    console.log('Audio effects not available');
+                }
+            }
+        });
     </script>
 </body>
+
 </html>
