@@ -8,14 +8,12 @@
     <link rel="icon" type="image/png" href="https://docs.snawf.my.id/assets/hdfav60.png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Professional CSS -->
+    <link rel="stylesheet" href="professional.css">
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Custom animations -->
-    <link rel="stylesheet" href="src/styles/animations.css">
 
     <!-- Tailwind configuration -->
     <script>
@@ -188,98 +186,16 @@
                 }, 3000);
             }
 
-            // Surprise Me Effect
+            // Professional role interaction
             const roleElement = document.querySelector('.role');
-            let isSurpriseActive = false;
-            let particleInterval;
 
             roleElement.addEventListener('click', () => {
-                isSurpriseActive = !isSurpriseActive;
-
-                if (isSurpriseActive) {
-                    // Activate surprise effects
-                    document.body.classList.add('surprise-active');
-                    roleElement.textContent = 'Surprise Mode: ON ✨';
-                    roleElement.style.background = 'rgba(242, 205, 96, 0.2)';
-                    roleElement.style.color = '#F2CD60';
-                    roleElement.style.borderColor = '#F2CD60';
-
-                    // Create floating particles
-                    createParticles();
-
-                    // Play subtle sound effect (optional)
-                    playSurpriseSound();
-                } else {
-                    // Deactivate surprise effects
-                    document.body.classList.remove('surprise-active');
-                    roleElement.textContent = 'Software Engineer';
-                    roleElement.style.background = 'rgba(68, 191, 241, 0.1)';
-                    roleElement.style.color = 'var(--color-5)';
-                    roleElement.style.borderColor = 'var(--color-5)';
-
-                    // Stop particles
-                    if (particleInterval) {
-                        clearInterval(particleInterval);
-                    }
-                }
-            });
-
-            function createParticles() {
-                // Remove existing particles
-                document.querySelectorAll('.surprise-particle').forEach(p => p.remove());
-
-                // Create new particles
-                particleInterval = setInterval(() => {
-                    const particle = document.createElement('div');
-                    particle.className = 'surprise-particle';
-
-                    // Random position
-                    const randomX = Math.random() * window.innerWidth;
-                    particle.style.left = randomX + 'px';
-
-                    // Random color from palette
-                    const colors = ['#F04770', '#FF9E64', '#F2CD60', '#6DEcb9', '#3DD6F5', '#9E86FF'];
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.background = randomColor;
-
-                    // Random size
-                    const size = Math.random() * 6 + 2;
-                    particle.style.width = size + 'px';
-                    particle.style.height = size + 'px';
-
-                    document.body.appendChild(particle);
-
-                    // Remove after animation
-                    setTimeout(() => {
-                        particle.remove();
-                    }, 4000);
+                // Subtle feedback effect
+                roleElement.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    roleElement.style.transform = 'scale(1)';
                 }, 200);
-            }
-
-            function playSurpriseSound() {
-                // Create a subtle audio effect using Web Audio API
-                try {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-
-                    oscillator.type = 'sine';
-                    oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
-                    oscillator.frequency.exponentialRampToValueAtTime(1046.50, audioContext.currentTime + 0.3); // C6
-
-                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-
-                    oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 0.3);
-                } catch (e) {
-                    // Audio API not supported or blocked
-                    console.log('Audio effects not available');
-                }
-            }
+            });
         });
     </script>
 </body>
