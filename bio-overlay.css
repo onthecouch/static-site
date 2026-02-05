@@ -1,0 +1,153 @@
+/* Bio Overlay Styles */
+.bio-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #202124;
+    /* Slate background */
+    color: #e8e2d0;
+    /* Cream text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+    /* Brutalist instant transition */
+    cursor: pointer;
+}
+
+.bio-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    animation: brutalistPopIn 0.1s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes brutalistPopIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.bio-content {
+    max-width: 90vw;
+    text-align: left;
+    cursor: default;
+    padding: 3rem;
+    position: relative;
+    align-items: flex-start;
+}
+
+.close-bio-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #e8e2d0;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    font-family: 'DM Serif Display', serif;
+}
+
+.close-bio-btn:hover {
+    opacity: 1;
+}
+
+.bio-text {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 600;
+    /* Semi-bold */
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+.bio-text p {
+    margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.bio-text p:first-of-type {
+    font-style: italic;
+    font-weight: 900;
+}
+
+/* Role element styling for click interaction */
+.role {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.role:hover {
+    transform: scale(1.05);
+}
+
+/* Smooth transitions for the role element */
+.role:active {
+    transform: scale(0.95);
+}
+
+/* Ensure the bio overlay doesn't interfere with other elements */
+.bio-overlay .bio-content {
+    pointer-events: auto;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+
+    .bio-overlay,
+    .bio-content,
+    .role {
+        transition: none;
+    }
+
+    .bio-overlay.active {
+        animation: none;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .bio-content {
+        max-width: 90vw;
+        padding: 1rem;
+    }
+
+    .bio-text p {
+        font-size: clamp(1rem, 6vw, 2rem);
+        line-height: 1.5;
+    }
+
+    .close-bio-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet optimization */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .bio-content {
+        max-width: 85vw;
+    }
+
+    .bio-text p {
+        font-size: clamp(1.1rem, 5vw, 2.2rem);
+    }
+}

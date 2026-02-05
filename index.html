@@ -7,9 +7,14 @@
     <title>snawf.my.id</title>
     <link rel="icon" type="image/png" href="https://docs.snawf.my.id/assets/hdfav60.png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400&display=swap"
+        rel="stylesheet">
 
     <!-- Professional CSS -->
     <link rel="stylesheet" href="professional.css">
+
+    <!-- Bio Overlay CSS -->
+    <link rel="stylesheet" href="bio-overlay.css">
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -136,6 +141,22 @@
         <span>2021-PRESENT © henrydns</span>
     </footer>
 
+    <!-- Bio Overlay Structure -->
+    <div id="bio-overlay" class="bio-overlay">
+        <div class="bio-content">
+            <button id="close-bio" class="close-bio-btn">&times;</button>
+            <div class="bio-text">
+                <p>I like building software and tinkering with servers. I host almost everything myself: media servers,
+                    dashboards, and docs on a Proxmox setup that I'm constantly optimizing.</p>
+                <p>I care about privacy and keeping things open-source. Basically, if it can be self-hosted, I'm
+                    probably running it.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bio Overlay JavaScript -->
+    <script src="bio-overlay.js"></script>
+
     <script>
         // Enhanced color copy functionality with subtle animations
         const colorItems = document.querySelectorAll('.color-item');
@@ -196,6 +217,11 @@
                     roleElement.style.transform = 'scale(1)';
                 }, 200);
             });
+
+            // Initialize bio overlay functionality
+            if (typeof initBioOverlay === 'function') {
+                initBioOverlay();
+            }
         });
     </script>
 </body>
